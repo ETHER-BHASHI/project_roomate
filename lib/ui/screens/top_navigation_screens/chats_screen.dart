@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tinder_app_flutter/data/db/entity/app_user.dart';
-import 'package:tinder_app_flutter/data/model/chat_with_user.dart';
-import 'package:tinder_app_flutter/data/provider/user_provider.dart';
-import 'package:tinder_app_flutter/ui/screens/chat_screen.dart';
-import 'package:tinder_app_flutter/ui/widgets/chats_list.dart';
-import 'package:tinder_app_flutter/ui/widgets/custom_modal_progress_hud.dart';
+import '../../../data/db/entity/app_user.dart';
+import '../../../data/model/chat_with_user.dart';
+import '../../../data/provider/user_provider.dart';
+import '../../widgets/chats_list.dart';
+import '../../widgets/custom_modal_progress_hud.dart';
+import '../chat_screen.dart';
 
 class ChatsScreen extends StatefulWidget {
   @override
@@ -34,7 +34,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
               builder: (context, userSnapshot) {
                 return CustomModalProgressHUD(
                   inAsyncCall:
-                      userProvider.user == null || userProvider.isLoading,
+                      userProvider.isLoading,
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<List<ChatWithUser>>(
                           future: userProvider
@@ -46,7 +46,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                               return CustomModalProgressHUD(
                                   inAsyncCall: true, child: Container());
                             } else {
-                              return chatWithUsersSnapshot.data.length == 0
+                              return chatWithUsersSnapshot.data?.length == 0
                                   ? Center(
                                       child: Container(
                                           child: Text('No matches',

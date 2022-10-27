@@ -14,6 +14,9 @@ import 'package:tinder_app_flutter/ui/widgets/swipe_card.dart';
 import 'package:tinder_app_flutter/util/constants.dart';
 import 'package:tinder_app_flutter/util/utils.dart';
 
+import '../../../data/db/entity/app_user.dart';
+import '../../../data/db/remote/firebase_database_source.dart';
+
 class MatchScreen extends StatefulWidget {
   @override
   _MatchScreenState createState() => _MatchScreenState();
@@ -22,7 +25,7 @@ class MatchScreen extends StatefulWidget {
 class _MatchScreenState extends State<MatchScreen> {
   final FirebaseDatabaseSource _databaseSource = FirebaseDatabaseSource();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  List<String> _ignoreSwipeIds;
+  late List<String> _ignoreSwipeIds;
 
   Future<AppUser> loadPerson(String myUserId) async {
     if (_ignoreSwipeIds == null) {

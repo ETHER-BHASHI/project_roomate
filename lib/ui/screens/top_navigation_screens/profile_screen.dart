@@ -47,8 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ? Column(children: [
                             getProfileImage(userSnapshot.data, userProvider),
                             SizedBox(height: 20),
-                            Text(
-                                '${userSnapshot.data.name}, ${userSnapshot.data.age}',
+                            Text('${userSnapshot.data.name}, ${userSnapshot.data.age}',
                                 style: Theme.of(context).textTheme.headline4),
                             SizedBox(height: 40),
                             getBio(userSnapshot.data, userProvider),

@@ -162,5 +162,5 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  RaisedButton({EdgeInsets padding, int highlightElevation, int elevation, RoundedRectangleBorder shape, Text child, Null Function() onPressed}) {}
+  RaisedButton({required EdgeInsets padding, required int highlightElevation, required int elevation, required RoundedRectangleBorder shape, required Text child, required Null Function() onPressed}) {}
 }

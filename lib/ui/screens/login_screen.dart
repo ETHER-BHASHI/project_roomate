@@ -60,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
           inAsyncCall: _isLoading,
           key: null,
           offset: null,
+
           child: Padding(
             padding: kDefaultPadding,
             child: Container(

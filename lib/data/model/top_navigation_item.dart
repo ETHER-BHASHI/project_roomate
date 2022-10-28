@@ -4,5 +4,5 @@ class TopNavigationItem {
   final Widget screen;
   final IconData iconData;
 
-  TopNavigationItem({@required this.screen, @required this.iconData});
+  TopNavigationItem({required this.screen, required this.iconData});
 }

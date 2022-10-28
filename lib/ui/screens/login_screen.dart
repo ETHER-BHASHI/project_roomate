@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tinder_app_flutter/data/db/remote/response.dart';
-import 'package:tinder_app_flutter/data/provider/user_provider.dart';
-import 'package:tinder_app_flutter/ui/screens/top_navigation_screen.dart';
-import 'package:tinder_app_flutter/ui/widgets/bordered_text_field.dart';
-import 'package:tinder_app_flutter/ui/widgets/custom_modal_progress_hud.dart';
-import 'package:tinder_app_flutter/ui/widgets/rounded_button.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/data/db/remote/response.dart';
+import 'package:project_roomate/data/provider/user_provider.dart';
+import 'package:project_roomate/ui/screens/top_navigation_screen.dart';
+import 'package:project_roomate/ui/widgets/bordered_text_field.dart';
+import 'package:project_roomate/ui/widgets/custom_modal_progress_hud.dart';
+import 'package:project_roomate/ui/widgets/rounded_button.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String _inputEmail = '';
   String _inputPassword = '';
   bool _isLoading = false;
-  UserProvider _userProvider;
+  late UserProvider _userProvider;
 
   @override
   void initState() {
@@ -58,6 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         body: CustomModalProgressHUD(
           inAsyncCall: _isLoading,
+          key: null,
+          offset: null,
           child: Padding(
             padding: kDefaultPadding,
             child: Container(

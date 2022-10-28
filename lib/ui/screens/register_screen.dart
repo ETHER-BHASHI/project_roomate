@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'package:tinder_app_flutter/data/db/remote/response.dart';
-import 'package:tinder_app_flutter/data/model/user_registration.dart';
-import 'package:tinder_app_flutter/data/provider/user_provider.dart';
-import 'package:tinder_app_flutter/ui/screens/register_sub_screens/add_photo_screen.dart';
-import 'package:tinder_app_flutter/ui/screens/register_sub_screens/age_screen.dart';
-import 'package:tinder_app_flutter/ui/screens/register_sub_screens/email_and_password_screen.dart';
-import 'package:tinder_app_flutter/ui/screens/register_sub_screens/name_screen.dart';
-import 'package:tinder_app_flutter/ui/screens/top_navigation_screen.dart';
-import 'package:tinder_app_flutter/ui/widgets/custom_modal_progress_hud.dart';
-import 'package:tinder_app_flutter/ui/widgets/rounded_button.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
-import 'package:tinder_app_flutter/util/utils.dart';
-import 'package:tinder_app_flutter/ui/screens/start_screen.dart';
+import 'package:project_roomate/data/db/remote/response.dart';
+import 'package:project_roomate/data/model/user_registration.dart';
+import 'package:project_roomate/data/provider/user_provider.dart';
+import 'package:project_roomate/ui/screens/register_sub_screens/add_photo_screen.dart';
+import 'package:project_roomate/ui/screens/register_sub_screens/age_screen.dart';
+import 'package:project_roomate/ui/screens/register_sub_screens/email_and_password_screen.dart';
+import 'package:project_roomate/ui/screens/register_sub_screens/name_screen.dart';
+import 'package:project_roomate/ui/screens/top_navigation_screen.dart';
+import 'package:project_roomate/ui/widgets/custom_modal_progress_hud.dart';
+import 'package:project_roomate/ui/widgets/rounded_button.dart';
+import 'package:project_roomate/util/constants.dart';
+import 'package:project_roomate/util/utils.dart';
+import 'package:project_roomate/ui/screens/start_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -121,6 +121,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         appBar: AppBar(title: Text('Register')),
         body: CustomModalProgressHUD(
           inAsyncCall: _isLoading,
+          key: null,
+          offset: null,
           child: Container(
             margin: EdgeInsets.only(bottom: 40),
             child: Column(

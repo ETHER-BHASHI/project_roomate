@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/data/db/entity/app_user.dart';
-import 'package:tinder_app_flutter/data/db/entity/chat.dart';
-import 'package:tinder_app_flutter/data/db/entity/message.dart';
-import 'package:tinder_app_flutter/data/db/remote/firebase_database_source.dart';
-import 'package:tinder_app_flutter/ui/widgets/chat_top_bar.dart';
+import 'package:project_roomate/data/db/entity/app_user.dart';
+import 'package:project_roomate/data/db/entity/chat.dart';
+import 'package:project_roomate/data/db/entity/message.dart';
+import 'package:project_roomate/data/db/remote/firebase_database_source.dart';
+import 'package:project_roomate/ui/widgets/chat_top_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tinder_app_flutter/ui/widgets/message_bubble.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/ui/widgets/message_bubble.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class ChatScreen extends StatelessWidget {
   final ScrollController _scrollController = new ScrollController();
@@ -20,9 +20,9 @@ class ChatScreen extends StatelessWidget {
   final String otherUserId;
 
   ChatScreen(
-      {@required this.chatId,
-      @required this.myUserId,
-      @required this.otherUserId});
+      {required this.chatId,
+      required this.myUserId,
+      required this.otherUserId});
 
   void checkAndUpdateLastMessageSeen(
       Message lastMessage, String messageId, String myUserId) {
@@ -64,12 +64,12 @@ class ChatScreen extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) return Container();
                     List<Message> messages = [];
-                    snapshot.data.docs.forEach((element) {
+                    snapshot.data?.docs.forEach((element) {
                       messages.add(Message.fromSnapshot(element));
                     });
-                    if (snapshot.data.docs.length > 0) {
+                    if (snapshot.data?.docs.length > 0) {
                       checkAndUpdateLastMessageSeen(
-                          messages.first, snapshot.data.docs[0].id, myUserId);
+                          messages.first, snapshot.data?.docs[0].id, myUserId);
                     }
                     if (_scrollController.hasClients)
                       _scrollController.jumpTo(0.0);

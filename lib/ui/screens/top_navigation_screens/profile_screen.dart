@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:tinder_app_flutter/data/db/entity/app_user.dart';
-import 'package:tinder_app_flutter/data/provider/user_provider.dart';
-import 'package:tinder_app_flutter/ui/screens/start_screen.dart';
-import 'package:tinder_app_flutter/ui/widgets/custom_modal_progress_hud.dart';
-import 'package:tinder_app_flutter/ui/widgets/input_dialog.dart';
-import 'package:tinder_app_flutter/ui/widgets/rounded_button.dart';
-import 'package:tinder_app_flutter/ui/widgets/rounded_icon_button.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/data/db/entity/app_user.dart';
+import 'package:project_roomate/data/provider/user_provider.dart';
+import 'package:project_roomate/ui/screens/start_screen.dart';
+import 'package:project_roomate/ui/widgets/custom_modal_progress_hud.dart';
+import 'package:project_roomate/ui/widgets/input_dialog.dart';
+import 'package:project_roomate/ui/widgets/rounded_button.dart';
+import 'package:project_roomate/ui/widgets/rounded_icon_button.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -41,6 +41,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 return CustomModalProgressHUD(
                     inAsyncCall:
                         userProvider.user == null || userProvider.isLoading,
+                    key: null,
+                    offset: null,
                     child: userSnapshot.hasData
                         ? Column(children: [
                             getProfileImage(userSnapshot.data, userProvider),

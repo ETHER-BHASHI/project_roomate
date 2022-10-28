@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
-import 'package:tinder_app_flutter/ui/widgets/app_image_with_text.dart';
-import 'package:tinder_app_flutter/ui/widgets/rounded_button.dart';
-import 'package:tinder_app_flutter/ui/widgets/rounded_outlined_button.dart';
-import 'package:tinder_app_flutter/ui/screens/login_screen.dart';
-import 'package:tinder_app_flutter/ui/screens/register_screen.dart';
+import 'package:project_roomate/util/constants.dart';
+import 'package:project_roomate/ui/widgets/app_image_with_text.dart';
+import 'package:project_roomate/ui/widgets/rounded_button.dart';
+import 'package:project_roomate/ui/widgets/rounded_outlined_button.dart';
+import 'package:project_roomate/ui/screens/login_screen.dart';
+import 'package:project_roomate/ui/screens/register_screen.dart';
 
 class StartScreen extends StatelessWidget {
   static const String id = 'start_screen';

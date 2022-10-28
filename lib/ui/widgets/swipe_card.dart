@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/data/db/entity/app_user.dart';
-import 'package:tinder_app_flutter/ui/widgets/rounded_icon_button.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/data/db/entity/app_user.dart';
+import 'package:project_roomate/ui/widgets/rounded_icon_button.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class SwipeCard extends StatefulWidget {
   final AppUser person;
 
-  SwipeCard({@required this.person});
+  SwipeCard({required this.person});
 
   @override
   _SwipeCardState createState() => _SwipeCardState();

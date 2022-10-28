@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class Portrait extends StatelessWidget {
   final String imageUrl;
   final double height;
 
-  Portrait({this.imageUrl, this.height = 225.0});
+  Portrait({required this.imageUrl, this.height = 225.0});
 
   @override
   Widget build(BuildContext context) {

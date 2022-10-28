@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/ui/widgets/bordered_text_field.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/ui/widgets/bordered_text_field.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class InputDialog extends StatefulWidget {
   final String labelText;
@@ -11,8 +11,8 @@ class InputDialog extends StatefulWidget {
   _InputDialogState createState() => _InputDialogState();
 
   InputDialog(
-      {@required this.labelText,
-      @required this.onSavePressed,
+      {required this.labelText,
+      required this.onSavePressed,
       this.startInputText = ''});
 }
 
@@ -66,5 +66,5 @@ class _InputDialogState extends State<InputDialog> {
   }
 }
 
-FlatButton({Color color, Text child, Null Function() onPressed}) {
+FlatButton({required Color color, required Text child, required Null Function() onPressed}) {
 }

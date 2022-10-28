@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/util/constants.dart';
 import 'dart:io';
 
 enum ImageType { ASSET_IMAGE, FILE_IMAGE, NONE }
@@ -10,7 +10,7 @@ class ImagePortrait extends StatelessWidget {
   final ImageType imageType;
 
   ImagePortrait(
-      {@required this.imageType, this.imagePath, this.height = 250.0});
+      {required this.imageType, required this.imagePath, this.height = 250.0});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class ImagePortrait extends StatelessWidget {
     );
   }
 
-  Widget getImage() {
+  Widget? getImage() {
     if (imageType == ImageType.NONE || imagePath == null) return null;
     if (imageType == ImageType.FILE_IMAGE) {
       return Image.file(File(imagePath), fit: BoxFit.fill);

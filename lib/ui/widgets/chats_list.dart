@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/data/model/chat_with_user.dart';
-import 'package:tinder_app_flutter/data/model/chats_observer.dart';
-import 'package:tinder_app_flutter/ui/widgets/chat_list_tile.dart';
+import 'package:project_roomate/data/model/chat_with_user.dart';
+import 'package:project_roomate/data/model/chats_observer.dart';
+import 'package:project_roomate/ui/widgets/chat_list_tile.dart';
 
 class ChatsList extends StatefulWidget {
   final List<ChatWithUser> chatWithUserList;
@@ -9,16 +9,16 @@ class ChatsList extends StatefulWidget {
   final String myUserId;
 
   ChatsList(
-      {@required this.chatWithUserList,
-      @required this.onChatWithUserTap,
-      @required this.myUserId});
+      {required this.chatWithUserList,
+      required this.onChatWithUserTap,
+      required this.myUserId});
 
   @override
   _ChatsListState createState() => _ChatsListState();
 }
 
 class _ChatsListState extends State<ChatsList> {
-  ChatsObserver _chatsObserver;
+  late ChatsObserver _chatsObserver;
 
   @override
   void initState() {

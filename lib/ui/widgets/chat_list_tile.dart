@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/data/model/chat_with_user.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
-import 'package:tinder_app_flutter/util/utils.dart';
+import 'package:project_roomate/data/model/chat_with_user.dart';
+import 'package:project_roomate/util/constants.dart';
+import 'package:project_roomate/util/utils.dart';
 
 class ChatListTile extends StatelessWidget {
   final ChatWithUser chatWithUser;
@@ -10,10 +10,10 @@ class ChatListTile extends StatelessWidget {
   final String myUserId;
 
   ChatListTile(
-      {@required this.chatWithUser,
-      @required this.onTap,
-      @required this.onLongPress,
-      @required this.myUserId});
+      {required this.chatWithUser,
+      required this.onTap,
+      required this.onLongPress,
+      required this.myUserId});
 
   @override
   Widget build(BuildContext context) {

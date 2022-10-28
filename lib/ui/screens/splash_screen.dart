@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/ui/screens/start_screen.dart';
-import 'package:tinder_app_flutter/ui/screens/top_navigation_screen.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
-import 'package:tinder_app_flutter/util/shared_preferences_utils.dart';
+import 'package:project_roomate/ui/screens/start_screen.dart';
+import 'package:project_roomate/ui/screens/top_navigation_screen.dart';
+import 'package:project_roomate/util/constants.dart';
+import 'package:project_roomate/util/shared_preferences_utils.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String id = 'splash_screen';
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> checkIfUserExists() async {
-    String userId = await SharedPreferencesUtil.getUserId();
+    String? userId = await SharedPreferencesUtil.getUserId();
     Navigator.pop(context);
     if (userId != null) {
       Navigator.pushNamed(context, TopNavigationScreen.id);

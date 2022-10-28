@@ -20,12 +20,9 @@ class RoundedIconButton extends StatelessWidget {
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       minWidth: 0,
       elevation: 5,
-      color: buttonColor != null ? buttonColor : Theme.of(context).buttonColor,
-      onPressed: onPressed() => {
-    },
       padding: EdgeInsets.all((iconSize / 2) - paddingReduce),
       child: Icon(iconData, size: iconSize),
-      shape: CircleBorder(),
+      shape: CircleBorder(), onPressed: () {  },
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:project_roomate/util/constants.dart';
 class ChatTopBar extends StatelessWidget {
   final AppUser user;
 
-  ChatTopBar({@required this.user});
+  ChatTopBar({required this.user});
 
   @override
   Widget build(BuildContext context) {

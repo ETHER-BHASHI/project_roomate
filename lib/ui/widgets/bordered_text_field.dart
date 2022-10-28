@@ -11,8 +11,8 @@ class BorderedTextField extends StatelessWidget {
   final textController;
 
   BorderedTextField(
-      {@required this.labelText,
-      @required this.onChanged,
+      {required this.labelText,
+      required this.onChanged,
       this.keyboardType = TextInputType.text,
       this.obscureText = false,
       this.autoFocus = false,

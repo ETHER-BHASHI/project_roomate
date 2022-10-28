@@ -10,10 +10,10 @@ class ChatListTile extends StatelessWidget {
   final String myUserId;
 
   ChatListTile(
-      {@required this.chatWithUser,
-      @required this.onTap,
-      @required this.onLongPress,
-      @required this.myUserId});
+      {required this.chatWithUser,
+      required this.onTap,
+      required this.onLongPress,
+      required this.myUserId});
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
-import 'package:tinder_app_flutter/util/utils.dart';
+import 'package:project_roomate/util/constants.dart';
+import 'package:project_roomate/util/utils.dart';
 
 class MessageBubble extends StatelessWidget {
   final int epochTimeMs;
@@ -9,10 +9,10 @@ class MessageBubble extends StatelessWidget {
   final bool includeTime;
 
   MessageBubble(
-      {@required this.epochTimeMs,
-      @required this.text,
-      @required this.isSenderMyUser,
-      @required this.includeTime});
+      {required this.epochTimeMs,
+      required this.text,
+      required this.isSenderMyUser,
+      required this.includeTime});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MessageBubble extends StatelessWidget {
                   child: Container(
                     child: Text(convertEpochMsToDateTime(epochTimeMs),
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
                             fontSize: 14, fontWeight: FontWeight.normal)),
                     width: double.infinity,
                   ),
@@ -46,7 +46,7 @@ class MessageBubble extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 child: Text(
                   text,
-                  style: Theme.of(context).textTheme.bodyText1.copyWith(
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(
                       color: isSenderMyUser ? kSecondaryColor : Colors.black,
                       fontWeight: FontWeight.normal),
                 ),

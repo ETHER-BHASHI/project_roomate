@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class RoundedButton extends StatelessWidget {
   final String text;
   final Function onPressed;
 
-  RoundedButton({@required this.text, @required this.onPressed});
+  RoundedButton({required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -24,5 +24,5 @@ class RoundedButton extends StatelessWidget {
   }
 }
 
-RaisedButton({Color disabledColor, EdgeInsets padding, int highlightElevation, int elevation, RoundedRectangleBorder shape, Text child, Function onPressed}) {
+RaisedButton({required Color disabledColor, required EdgeInsets padding, required int highlightElevation, required int elevation, required RoundedRectangleBorder shape, required Text child, required Function onPressed}) {
 }

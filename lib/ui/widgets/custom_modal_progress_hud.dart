@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/util/constants.dart';
 
 ///
 /// Wrap around any widget that makes an async call to show a modal progress
@@ -31,13 +31,13 @@ class CustomModalProgressHUD extends StatelessWidget {
   final Widget child;
 
   CustomModalProgressHUD({
-    Key key,
+    required Key key,
     @required this.inAsyncCall,
     this.opacity = 0.3,
     this.color = Colors.transparent,
     this.progressIndicator = const CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(kAccentColor)),
-    this.offset,
+    required this.offset,
     this.dismissible = false,
     @required this.child,
   })  : assert(child != null),

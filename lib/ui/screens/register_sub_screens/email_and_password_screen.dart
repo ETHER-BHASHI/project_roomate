@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/ui/widgets/bordered_text_field.dart';
+import '../../widgets/bordered_text_field.dart';
 
 class EmailAndPasswordScreen extends StatelessWidget {
   final Function(String) emailOnChanged;
   final Function(String) passwordOnChanged;
 
   EmailAndPasswordScreen(
-      {@required this.emailOnChanged, @required this.passwordOnChanged});
+      {required this.emailOnChanged, required this.passwordOnChanged});
 
   @override
   Widget build(BuildContext context) {

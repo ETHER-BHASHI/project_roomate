@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/ui/widgets/bordered_text_field.dart';
+
+import '../../widgets/bordered_text_field.dart';
 
 class NameScreen extends StatelessWidget {
   final Function(String) onChanged;
 
-  NameScreen({@required this.onChanged});
+  NameScreen({required this.onChanged});
 
   @override
   Widget build(BuildContext context) {

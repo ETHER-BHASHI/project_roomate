@@ -6,7 +6,7 @@ import 'package:numberpicker/numberpicker.dart';
 class AgeScreen extends StatefulWidget {
   final Function(num) onChanged;
 
-  AgeScreen({@required this.onChanged});
+  AgeScreen({required this.onChanged});
 
   @override
   _AgeScreenState createState() => _AgeScreenState();

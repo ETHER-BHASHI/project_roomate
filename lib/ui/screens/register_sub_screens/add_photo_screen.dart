@@ -6,7 +6,7 @@ import 'package:project_roomate/ui/widgets/image_portrait.dart';
 class AddPhotoScreen extends StatefulWidget {
   final Function(String) onPhotoChanged;
 
-  AddPhotoScreen({@required this.onPhotoChanged});
+  AddPhotoScreen({required this.onPhotoChanged});
 
   @override
   _AddPhotoScreenState createState() => _AddPhotoScreenState();
@@ -14,10 +14,10 @@ class AddPhotoScreen extends StatefulWidget {
 
 class _AddPhotoScreenState extends State<AddPhotoScreen> {
   final picker = ImagePicker();
-  String _imagePath;
+  late String _imagePath;
 
   Future pickImageFromGallery() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       widget.onPhotoChanged(pickedFile.path);

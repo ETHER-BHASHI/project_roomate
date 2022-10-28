@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tinder_app_flutter/data/db/entity/app_user.dart';
-import 'package:tinder_app_flutter/data/model/chat_with_user.dart';
-import 'package:tinder_app_flutter/data/provider/user_provider.dart';
-import 'package:tinder_app_flutter/ui/screens/chat_screen.dart';
-import 'package:tinder_app_flutter/ui/widgets/chats_list.dart';
-import 'package:tinder_app_flutter/ui/widgets/custom_modal_progress_hud.dart';
+import 'package:project_roomate/data/db/entity/app_user.dart';
+import 'package:project_roomate/data/model/chat_with_user.dart';
+import 'package:project_roomate/data/provider/user_provider.dart';
+import 'package:project_roomate/ui/screens/chat_screen.dart';
+import 'package:project_roomate/ui/widgets/chats_list.dart';
+import 'package:project_roomate/ui/widgets/custom_modal_progress_hud.dart';
 
 class ChatsScreen extends StatefulWidget {
   @override

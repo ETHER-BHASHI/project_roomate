@@ -47,7 +47,7 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                     children: [
                       Container(
                         child: _imagePath == null
-                            ? ImagePortrait(imageType: ImageType.NONE)
+                            ? ImagePortrait(imageType: ImageType.NONE, imagePath: '',)
                             : ImagePortrait(
                                 imagePath: _imagePath,
                                 imageType: ImageType.FILE_IMAGE,
@@ -60,7 +60,7 @@ class _AddPhotoScreenState extends State<AddPhotoScreen> {
                               ? RoundedIconButton(
                                   onPressed: pickImageFromGallery,
                                   iconData: Icons.add,
-                                  iconSize: 20,
+                                  iconSize: 20, buttonColor: Colors.yellow,
                                 )
                               : null,
                         ),

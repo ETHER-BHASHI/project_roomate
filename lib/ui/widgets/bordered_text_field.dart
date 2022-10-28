@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class BorderedTextField extends StatelessWidget {
   final String labelText;

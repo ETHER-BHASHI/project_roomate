@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tinder_app_flutter/data/db/entity/app_user.dart';
-import 'package:tinder_app_flutter/util/constants.dart';
+import 'package:project_roomate/data/db/entity/app_user.dart';
+import 'package:project_roomate/util/constants.dart';
 
 class ChatTopBar extends StatelessWidget {
   final AppUser user;

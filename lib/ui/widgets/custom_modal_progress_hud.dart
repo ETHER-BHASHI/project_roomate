@@ -32,14 +32,14 @@ class CustomModalProgressHUD extends StatelessWidget {
 
   CustomModalProgressHUD({
     required Key key,
-    @required this.inAsyncCall,
+    required this.inAsyncCall,
     this.opacity = 0.3,
     this.color = Colors.transparent,
     this.progressIndicator = const CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(kAccentColor)),
     required this.offset,
     this.dismissible = false,
-    @required this.child,
+    required this.child,
   })  : assert(child != null),
         assert(inAsyncCall != null),
         super(key: key);

@@ -15,7 +15,14 @@ import 'package:tinder_app_flutter/util/constants.dart';
 import 'package:tinder_app_flutter/util/utils.dart';
 
 import '../../../data/db/entity/app_user.dart';
+import '../../../data/db/entity/chat.dart';
+import '../../../data/db/entity/swipe.dart';
 import '../../../data/db/remote/firebase_database_source.dart';
+import '../../../util/constants.dart';
+import '../../../util/utils.dart';
+import '../../widgets/custom_modal_progress_hud.dart';
+import '../../widgets/rounded_icon_button.dart';
+import '../matched_screen.dart';
 
 class MatchScreen extends StatefulWidget {
   @override
@@ -29,7 +36,7 @@ class _MatchScreenState extends State<MatchScreen> {
 
   Future<AppUser> loadPerson(String myUserId) async {
     if (_ignoreSwipeIds == null) {
-      _ignoreSwipeIds = List<String>();
+      _ignoreSwipeIds = <String>[];
       var swipes = await _databaseSource.getSwipes(myUserId);
       for (var i = 0; i < swipes.size; i++) {
         Swipe swipe = Swipe.fromSnapshot(swipes.docs[i]);
@@ -111,6 +118,7 @@ class _MatchScreenState extends State<MatchScreen> {
                             if (!snapshot.hasData) {
                               return CustomModalProgressHUD(
                                 inAsyncCall: true,
+                                key: null,
                                 child: Container(),
                               );
                             }
@@ -154,7 +162,7 @@ class _MatchScreenState extends State<MatchScreen> {
                                                         true);
                                                   },
                                                   iconData: Icons.favorite,
-                                                  iconSize: 30,
+                                                  iconSize: 30, buttonColor: Colors.blue,
                                                 ),
                                               ],
                                             ),

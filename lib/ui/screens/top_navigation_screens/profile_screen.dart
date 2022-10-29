@@ -45,12 +45,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     offset: Offset.fromDirection(1.0),
                     child: userSnapshot.hasData
                         ? Column(children: [
-                            getProfileImage(userSnapshot.data, userProvider),
+                            getProfileImage(userSnapshot.requireData, userProvider),
                             SizedBox(height: 20),
-                            Text('${userSnapshot.data.name}, ${userSnapshot.data.age}',
+                            Text('${userSnapshot.data?.name}, ${userSnapshot.data?.age}',
                                 style: Theme.of(context).textTheme.headline4),
                             SizedBox(height: 40),
-                            getBio(userSnapshot.data, userProvider),
+                            getBio(userSnapshot.requireData, userProvider),
                             Expanded(child: Container()),
                             RoundedButton(
                                 text: 'LOGOUT',

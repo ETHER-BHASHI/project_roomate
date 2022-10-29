@@ -181,7 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               })
                             else
                               showSnackBar(
-                                  _scaffoldKey, getInvalidRegistrationMessage())
+                                  GlobalKey(), getInvalidRegistrationMessage())
                           },
                         ),
                 ),

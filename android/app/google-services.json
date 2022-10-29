@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "33341572362",
-    "project_id": "cbigdtuw05-52d89",
-    "storage_bucket": "cbigdtuw05-52d89.appspot.com"
+    "project_number": "803070807794",
+    "project_id": "cbigdtuw05-9920f",
+    "storage_bucket": "cbigdtuw05-9920f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:33341572362:android:2c045c60439822c1f566f3",
+        "mobilesdk_app_id": "1:803070807794:android:63de769332e2e33b1cca6b",
         "android_client_info": {
           "package_name": "com.example.project_roomate"
         }
       },
       "oauth_client": [
         {
-          "client_id": "33341572362-09p72n6gm1dathhaa68n1ng85clnef8u.apps.googleusercontent.com",
+          "client_id": "803070807794-n7sanvrve0rpj4c58glvnie3s3bhjam7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDVHl6npX5yU43PYXVWdSQHkIWh7SvSbjo"
+          "current_key": "AIzaSyCuU4WE-1wygfL3Ul-_owvMBjuOenCyW7E"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "33341572362-09p72n6gm1dathhaa68n1ng85clnef8u.apps.googleusercontent.com",
+              "client_id": "803070807794-n7sanvrve0rpj4c58glvnie3s3bhjam7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

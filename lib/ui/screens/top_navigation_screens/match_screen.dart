@@ -14,6 +14,16 @@ import 'package:project_roomate/ui/widgets/swipe_card.dart';
 import 'package:project_roomate/util/constants.dart';
 import 'package:project_roomate/util/utils.dart';
 
+import '../../../data/db/entity/app_user.dart';
+import '../../../data/db/entity/chat.dart';
+import '../../../data/db/entity/swipe.dart';
+import '../../../data/db/remote/firebase_database_source.dart';
+import '../../../util/constants.dart';
+import '../../../util/utils.dart';
+import '../../widgets/custom_modal_progress_hud.dart';
+import '../../widgets/rounded_icon_button.dart';
+import '../matched_screen.dart';
+
 class MatchScreen extends StatefulWidget {
   @override
   _MatchScreenState createState() => _MatchScreenState();
@@ -25,13 +35,15 @@ class _MatchScreenState extends State<MatchScreen> {
   late List<String> _ignoreSwipeIds;
 
   Future<AppUser> loadPerson(String myUserId) async {
-    _ignoreSwipeIds = <String>[];
-    var swipes = await _databaseSource.getSwipes(myUserId);
-    for (var i = 0; i < swipes.size; i++) {
-      Swipe swipe = Swipe.fromSnapshot(swipes.docs[i]);
-      _ignoreSwipeIds.add(swipe.id);
+    if (_ignoreSwipeIds == null) {
+      _ignoreSwipeIds = <String>[];
+      var swipes = await _databaseSource.getSwipes(myUserId);
+      for (var i = 0; i < swipes.size; i++) {
+        Swipe swipe = Swipe.fromSnapshot(swipes.docs[i]);
+        _ignoreSwipeIds.add(swipe.id);
+      }
+      _ignoreSwipeIds.add(myUserId);
     }
-    _ignoreSwipeIds.add(myUserId);
     var res = await _databaseSource.getPersonsToMatchWith(1, _ignoreSwipeIds);
     if (res.docs.length > 0) {
       var userToMatchWith = AppUser.fromSnapshot(res.docs.first);
@@ -87,12 +99,11 @@ class _MatchScreenState extends State<MatchScreen> {
               builder: (context, userSnapshot) {
                 return CustomModalProgressHUD(
                   inAsyncCall:
-                      userProvider.isLoading,
-                  key: _scaffoldKey,
-                  offset: Offset.fromDirection(1.0),
+                      userProvider.user == null || userProvider.isLoading,
+                  key: null,
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<AppUser>(
-                          future: loadPerson(userSnapshot.data!.id),
+                          future: loadPerson(userSnapshot.data.id),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                     ConnectionState.done &&
@@ -108,8 +119,7 @@ class _MatchScreenState extends State<MatchScreen> {
                             if (!snapshot.hasData) {
                               return CustomModalProgressHUD(
                                 inAsyncCall: true,
-                                key: _scaffoldKey,
-                                offset: Offset.fromDirection(1.0),
+                                key: null,
                                 child: Container(),
                               );
                             }
@@ -121,7 +131,7 @@ class _MatchScreenState extends State<MatchScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      SwipeCard(person: snapshot.requireData),
+                                      SwipeCard(person: snapshot.data),
                                       Expanded(
                                         child: Container(
                                           margin: EdgeInsets.symmetric(
@@ -136,8 +146,8 @@ class _MatchScreenState extends State<MatchScreen> {
                                                 RoundedIconButton(
                                                   onPressed: () {
                                                     personSwiped(
-                                                        userSnapshot.requireData,
-                                                        snapshot.requireData,
+                                                        userSnapshot.data,
+                                                        snapshot.data,
                                                         false);
                                                   },
                                                   iconData: Icons.clear,
@@ -148,12 +158,13 @@ class _MatchScreenState extends State<MatchScreen> {
                                                 RoundedIconButton(
                                                   onPressed: () {
                                                     personSwiped(
-                                                        userSnapshot.requireData,
-                                                        snapshot.requireData,
+                                                        userSnapshot.data,
+                                                        snapshot.data,
                                                         true);
                                                   },
                                                   iconData: Icons.favorite,
-                                                  iconSize: 30, buttonColor: Colors.blue,
+                                                  iconSize: 30,
+                                                  buttonColor: Colors.blue,
                                                 ),
                                               ],
                                             ),

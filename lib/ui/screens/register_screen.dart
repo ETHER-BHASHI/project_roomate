@@ -169,7 +169,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: _currentScreenIndex == (_endScreenIndex)
                       ? RoundedButton(
                           text: 'REGISTER',
-                          onPressed: _isLoading == false
+                          onPressed: bool _isLoading == false,
                               ? () => {registerUser()}
                               : null)
                       : RoundedButton(

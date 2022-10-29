@@ -65,9 +65,9 @@ class ChatScreen extends StatelessWidget {
                     snapshot.data?.docs.forEach((element) {
                       messages.add(Message.fromSnapshot(element));
                     });
-                    if (snapshot.data?.docs.length > 0) {
+                    if (snapshot.data!.docs.length > 0) {
                       checkAndUpdateLastMessageSeen(
-                          messages.first, snapshot.data?.docs[0].id, myUserId);
+                          messages.first, snapshot.data!.docs[0].id, myUserId);
                     }
                     if (_scrollController.hasClients)
                       _scrollController.jumpTo(0.0);

@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'message.dart';
 
 class Chat {
-  late String id;
-  late Message lastMessage;
+  String id=" ";
+  Message lastMessage= Message as Message;
 
   Chat(this.id, this.lastMessage);
 

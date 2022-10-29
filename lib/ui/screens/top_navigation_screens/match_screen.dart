@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:project_roomate/data/db/entity/message.dart';
 import 'package:provider/provider.dart';
 import 'package:project_roomate/data/db/entity/app_user.dart';
 import 'package:project_roomate/data/db/entity/chat.dart';
@@ -24,7 +25,7 @@ class _MatchScreenState extends State<MatchScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   late List<String> _ignoreSwipeIds;
 
-  Future<AppUser> loadPerson(String myUserId) async {
+  Future<AppUser?> loadPerson(String myUserId) async {
     _ignoreSwipeIds = <String>[];
     var swipes = await _databaseSource.getSwipes(myUserId);
     for (var i = 0; i < swipes.size; i++) {
@@ -50,7 +51,7 @@ class _MatchScreenState extends State<MatchScreen> {
         _databaseSource.addMatch(myUser.id, Match(otherUser.id));
         _databaseSource.addMatch(otherUser.id, Match(myUser.id));
         String chatId = compareAndCombineIds(myUser.id, otherUser.id);
-        _databaseSource.addChat(Chat(chatId, null));
+        _databaseSource.addChat(Chat(chatId, Message as Message));
 
         Navigator.pushNamed(context, MatchedScreen.id, arguments: {
           "my_user_id": myUser.id,
@@ -92,7 +93,7 @@ class _MatchScreenState extends State<MatchScreen> {
                   offset: Offset.fromDirection(1.0),
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<AppUser>(
-                          future: loadPerson(userSnapshot.data!.id),
+                          future: loadPerson(user),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                     ConnectionState.done &&

@@ -40,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               builder: (context, userSnapshot) {
                 return CustomModalProgressHUD(
                     inAsyncCall:
-                        userProvider.user == null || userProvider.isLoading,
+                       userProvider.isLoading,
                     key: _scaffoldKey,
                     offset: Offset.fromDirection(1.0),
                     child: userSnapshot.hasData

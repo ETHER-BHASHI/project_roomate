@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:tinder_app_flutter/data/db/remote/response.dart';
+import 'package:project_roomate/data/db/remote/response.dart';
 
 class FirebaseStorageSource {
   FirebaseStorage instance = FirebaseStorage.instance;

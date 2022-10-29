@@ -2,17 +2,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AppUser {
-  String id;
-  String name;
-  int age;
-  String profilePhotoPath;
-  String bio = "";
+  late String id;
+  late String name;
+  late int age;
+  late String profilePhotoPath;
+  late String bio = "";
 
   AppUser(
-      {@required this.id,
-      @required this.name,
-      @required this.age,
-      @required this.profilePhotoPath});
+      {required this.id,
+      required this.name,
+      required this.age,
+      required this.profilePhotoPath});
 
   AppUser.fromSnapshot(DocumentSnapshot snapshot) {
     id = snapshot['id'];

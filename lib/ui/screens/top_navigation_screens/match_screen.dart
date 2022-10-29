@@ -14,16 +14,6 @@ import 'package:project_roomate/ui/widgets/swipe_card.dart';
 import 'package:project_roomate/util/constants.dart';
 import 'package:project_roomate/util/utils.dart';
 
-import '../../../data/db/entity/app_user.dart';
-import '../../../data/db/entity/chat.dart';
-import '../../../data/db/entity/swipe.dart';
-import '../../../data/db/remote/firebase_database_source.dart';
-import '../../../util/constants.dart';
-import '../../../util/utils.dart';
-import '../../widgets/custom_modal_progress_hud.dart';
-import '../../widgets/rounded_icon_button.dart';
-import '../matched_screen.dart';
-
 class MatchScreen extends StatefulWidget {
   @override
   _MatchScreenState createState() => _MatchScreenState();
@@ -35,7 +25,7 @@ class _MatchScreenState extends State<MatchScreen> {
   late List<String> _ignoreSwipeIds;
 
   Future<AppUser> loadPerson(String myUserId) async {
-    if (_ignoreSwipeIds == null) {
+    if (_ignoreSwipeIds != null) {
       _ignoreSwipeIds = <String>[];
       var swipes = await _databaseSource.getSwipes(myUserId);
       for (var i = 0; i < swipes.size; i++) {

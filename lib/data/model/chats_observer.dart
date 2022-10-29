@@ -17,9 +17,7 @@ class ChatsObserver {
           _databaseSource.observeChat(element.chat.id).listen((event) {
         Chat updatedChat = Chat.fromSnapshot(event);
 
-        if (updatedChat.lastMessage == null ||
-            element.chat.lastMessage == null ||
-            (updatedChat.lastMessage.epochTimeMs !=
+        if ((updatedChat.lastMessage.epochTimeMs !=
                 element.chat.lastMessage.epochTimeMs)) {
           element.chat = updatedChat;
           onChatUpdated();
@@ -35,8 +33,5 @@ class ChatsObserver {
       await subscriptionList[i].cancel();
       subscriptionList.removeAt(i);
     }
-
-    subscriptionList = null;
-    chatsList = null;
   }
 }

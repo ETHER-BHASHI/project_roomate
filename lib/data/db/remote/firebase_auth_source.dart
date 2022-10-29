@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:tinder_app_flutter/data/db/remote/response.dart';
+import 'package:project_roomate/data/db/remote/response.dart';
 
 class FirebaseAuthSource {
   FirebaseAuth instance = FirebaseAuth.instance;

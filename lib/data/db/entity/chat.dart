@@ -2,16 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'message.dart';
 
 class Chat {
-  String id;
-  Message lastMessage;
+  late String id;
+  late Message lastMessage;
 
   Chat(this.id, this.lastMessage);
 
   Chat.fromSnapshot(DocumentSnapshot snapshot) {
     id = snapshot['id'];
-    lastMessage = snapshot['last_message'] != null
+    lastMessage = (snapshot['last_message'] != null
         ? Message.fromMap(snapshot['last_message'])
-        : null;
+        : null)!;
   }
 
   Map<String, dynamic> toMap() {

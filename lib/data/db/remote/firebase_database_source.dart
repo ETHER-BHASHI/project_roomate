@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:tinder_app_flutter/data/db/entity/app_user.dart';
-import 'package:tinder_app_flutter/data/db/entity/chat.dart';
-import 'package:tinder_app_flutter/data/db/entity/match.dart';
-import 'package:tinder_app_flutter/data/db/entity/message.dart';
-import 'package:tinder_app_flutter/data/db/entity/swipe.dart';
+import 'package:project_roomate/data/db/entity/chat.dart';
+import 'package:project_roomate/data/db/entity/match.dart';
+import 'package:project_roomate/data/db/entity/message.dart';
+import 'package:project_roomate/data/db/entity/swipe.dart';
+import '../entity/app_user.dart';
+
 
 class FirebaseDatabaseSource {
   final FirebaseFirestore instance = FirebaseFirestore.instance;

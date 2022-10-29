@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Match {
-  String id;
+  late String id;
 
   Match(this.id);
 

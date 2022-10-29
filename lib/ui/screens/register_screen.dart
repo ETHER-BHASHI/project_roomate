@@ -28,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final int _endScreenIndex = 3;
   int _currentScreenIndex = 0;
   bool _isLoading = false;
-  late UserProvider _userProvider;
+  UserProvider _userProvider;
 
   @override
   void initState() {
@@ -168,7 +168,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: _currentScreenIndex == (_endScreenIndex)
                       ? RoundedButton(
                           text: 'REGISTER',
-                          onPressed: _isLoading == False
+                          onPressed: _isLoading == false
                               ? () => {registerUser()}
                               : null)
                       : RoundedButton(

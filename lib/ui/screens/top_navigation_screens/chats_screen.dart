@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:project_roomate/data/db/entity/app_user.dart';
-import 'package:project_roomate/data/model/chat_with_user.dart';
-import 'package:project_roomate/data/provider/user_provider.dart';
-import 'package:project_roomate/ui/screens/chat_screen.dart';
-import 'package:project_roomate/ui/widgets/chats_list.dart';
-import 'package:project_roomate/ui/widgets/custom_modal_progress_hud.dart';
+import '../../../data/db/entity/app_user.dart';
+import '../../../data/model/chat_with_user.dart';
+import '../../../data/provider/user_provider.dart';
+import '../../widgets/chats_list.dart';
+import '../../widgets/custom_modal_progress_hud.dart';
+import '../chat_screen.dart';
 
 class ChatsScreen extends StatefulWidget {
   @override
@@ -34,19 +34,21 @@ class _ChatsScreenState extends State<ChatsScreen> {
               builder: (context, userSnapshot) {
                 return CustomModalProgressHUD(
                   inAsyncCall:
-                      userProvider.user == null || userProvider.isLoading,
+                      userProvider.isLoading,
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<List<ChatWithUser>>(
                           future: userProvider
-                              .getChatsWithUser(userSnapshot.data.id),
+                              .getChatsWithUser(userSnapshot.data?.id),
                           builder: (context, chatWithUsersSnapshot) {
                             if (chatWithUsersSnapshot.data == null &&
                                 chatWithUsersSnapshot.connectionState !=
                                     ConnectionState.done) {
                               return CustomModalProgressHUD(
-                                  inAsyncCall: true, child: Container());
+                                  inAsyncCall: true, key: null,
+                                  offset: null,
+                                  child: Container());
                             } else {
-                              return chatWithUsersSnapshot.data.length == 0
+                              return chatWithUsersSnapshot.data?.length == 0
                                   ? Center(
                                       child: Container(
                                           child: Text('No matches',

@@ -100,6 +100,8 @@ class _MatchScreenState extends State<MatchScreen> {
                 return CustomModalProgressHUD(
                   inAsyncCall:
                       userProvider.user == null || userProvider.isLoading,
+                  key: _scaffoldKey,
+                  offset: Offset.fromDirection(1.0),
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<AppUser>(
                           future: loadPerson(userSnapshot.data.id),
@@ -118,7 +120,8 @@ class _MatchScreenState extends State<MatchScreen> {
                             if (!snapshot.hasData) {
                               return CustomModalProgressHUD(
                                 inAsyncCall: true,
-                                key: null,
+                                key: _scaffoldKey,
+                                offset: Offset.fromDirection(1.0),
                                 child: Container(),
                               );
                             }

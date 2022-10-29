@@ -28,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final int _endScreenIndex = 3;
   int _currentScreenIndex = 0;
   bool _isLoading = false;
-  UserProvider _userProvider;
+  late UserProvider _userProvider;
 
   @override
   void initState() {
@@ -72,7 +72,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         return NameScreen(
             onChanged: (value) => {_userRegistration.name = value});
       case 1:
-        return AgeScreen(onChanged: (value) => {_userRegistration.age = value});
+        return AgeScreen(onChanged: (value) => {_userRegistration.age = 0});
       case 2:
         return AddPhotoScreen(
             onPhotoChanged: (value) =>
@@ -114,6 +114,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double distance;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -121,8 +122,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         appBar: AppBar(title: Text('Register')),
         body: CustomModalProgressHUD(
           inAsyncCall: _isLoading,
-          key: null,
-          offset: null,
+          key: _scaffoldKey,
+          offset: Offset.fromDirection(distance= 1.0),
           child: Container(
             margin: EdgeInsets.only(bottom: 40),
             child: Column(

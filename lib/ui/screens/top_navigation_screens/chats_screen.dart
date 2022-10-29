@@ -35,6 +35,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
                 return CustomModalProgressHUD(
                   inAsyncCall:
                       userProvider.isLoading,
+                  offset: Offset.fromDirection(1.0),
+                  key: null,
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<List<ChatWithUser>>(
                           future: userProvider
@@ -44,8 +46,8 @@ class _ChatsScreenState extends State<ChatsScreen> {
                                 chatWithUsersSnapshot.connectionState !=
                                     ConnectionState.done) {
                               return CustomModalProgressHUD(
-                                  inAsyncCall: true, key: null,
-                                  offset: null,
+                                  inAsyncCall: true, key: ,
+                                  offset: Offset.fromDirection(1.0),
                                   child: Container());
                             } else {
                               return chatWithUsersSnapshot.data?.length == 0

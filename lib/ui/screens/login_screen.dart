@@ -58,8 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         body: CustomModalProgressHUD(
           inAsyncCall: _isLoading,
-          key: null,
-          offset: null,
+          key: _scaffoldKey,
+          offset: Offset.fromDirection(1.0),
 
           child: Padding(
             padding: kDefaultPadding,

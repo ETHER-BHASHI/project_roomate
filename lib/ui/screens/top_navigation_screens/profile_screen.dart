@@ -41,8 +41,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 return CustomModalProgressHUD(
                     inAsyncCall:
                         userProvider.user == null || userProvider.isLoading,
-                    key: null,
-                    offset: null,
+                    key: _scaffoldKey,
+                    offset: Offset.fromDirection(1.0),
                     child: userSnapshot.hasData
                         ? Column(children: [
                             getProfileImage(userSnapshot.data, userProvider),
@@ -86,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
               iconData: Icons.edit,
               iconSize: 18,
-              paddingReduce: 4,
+              paddingReduce: 4, buttonColor: Colors.blueAccent,
             ),
           ],
         ),
@@ -125,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               }
             },
             iconData: Icons.edit,
-            iconSize: 18,
+            iconSize: 18, buttonColor: Colors.blueAccent,
           ),
         ),
       ],

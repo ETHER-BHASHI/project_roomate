@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:project_roomate/data/db/entity/chat.dart';
 import 'package:project_roomate/data/db/remote/firebase_auth_source.dart';
 import 'package:project_roomate/data/db/remote/firebase_database_source.dart';
-import 'package:project_roomate/db/remote/firebase_storage_source.dart';
 import 'package:project_roomate/data/db/remote/response.dart';
 import 'package:project_roomate/data/model/chat_with_user.dart';
 import 'package:project_roomate/data/model/user_registration.dart';
@@ -11,6 +10,7 @@ import 'package:project_roomate/util/shared_preferences_utils.dart';
 import 'package:project_roomate/data/db/entity/app_user.dart';
 import 'package:project_roomate/util/utils.dart';
 import 'package:project_roomate/data/db/entity/match.dart';
+import '../db/remote/firebase_storage_source.dart';
 
 class UserProvider extends ChangeNotifier {
   FirebaseAuthSource _authSource = FirebaseAuthSource();
@@ -18,7 +18,7 @@ class UserProvider extends ChangeNotifier {
   FirebaseDatabaseSource _databaseSource = FirebaseDatabaseSource();
 
   bool isLoading = false;
-  AppUser _user;
+  late AppUser _user;
 
   Future<AppUser> get user => _getUser();
 
@@ -26,10 +26,10 @@ class UserProvider extends ChangeNotifier {
       GlobalKey<ScaffoldState> errorScaffoldKey) async {
     Response<dynamic> response = await _authSource.signIn(email, password);
     if (response is Success<UserCredential>) {
-      String id = response.value.user.uid;
-      SharedPreferencesUtil.setUserId(id);
+      String? id = response.value.user?.uid;
+      SharedPreferencesUtil.setUserId(id!);
     } else if (response is Error) {
-      showSnackBar(errorScaffoldKey, response.message);
+      showSnackBar(GlobalKey(), response.message);
     }
     return response;
   }
@@ -39,9 +39,9 @@ class UserProvider extends ChangeNotifier {
     Response<dynamic> response = await _authSource.register(
         userRegistration.email, userRegistration.password);
     if (response is Success<UserCredential>) {
-      String id = (response as Success<UserCredential>).value.user.uid;
+      String? id = (response).value.user?.uid;
       response = await _storageSource.uploadUserProfilePhoto(
-          userRegistration.localProfilePhotoPath, id);
+          userRegistration.localProfilePhotoPath, id!);
 
       if (response is Success<String>) {
         String profilePhotoUrl = response.value;
@@ -56,15 +56,12 @@ class UserProvider extends ChangeNotifier {
         return Response.success(user);
       }
     }
-    if (response is Error) showSnackBar(errorScaffoldKey, response.message);
+    if (response is Error) showSnackBar(GlobalKey(), response.message);
     return response;
   }
 
   Future<AppUser> _getUser() async {
-    if (_user != null) return _user;
-    String id = await SharedPreferencesUtil.getUserId();
-    _user = AppUser.fromSnapshot(await _databaseSource.getUser(id));
-    return _user;
+ return _user;
   }
 
   void updateUserProfilePhoto(
@@ -78,7 +75,7 @@ class UserProvider extends ChangeNotifier {
       _user.profilePhotoPath = response.value;
       _databaseSource.updateUser(_user);
     } else if (response is Error) {
-      showSnackBar(errorScaffoldKey, response.message);
+      showSnackBar(GlobalKey(), response.message);
     }
     notifyListeners();
   }
@@ -90,7 +87,6 @@ class UserProvider extends ChangeNotifier {
   }
 
   Future<void> logoutUser() async {
-    _user = null;
     await SharedPreferencesUtil.removeUserId();
   }
 

@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'message.dart';
 
 class Chat {
-  String id=" ";
-  Message lastMessage= Message as Message;
+  String id = " ";
+  Message? lastMessage = Message as Message;
 
   Chat(this.id, this.lastMessage);
 
@@ -17,7 +17,7 @@ class Chat {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'last_message': lastMessage != null ? lastMessage.toMap() : null,
+      'last_message': lastMessage != null ? lastMessage!.toMap() : null,
     };
   }
 }

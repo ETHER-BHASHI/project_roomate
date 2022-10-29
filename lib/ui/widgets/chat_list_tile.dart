@@ -50,11 +50,11 @@ class ChatListTile extends StatelessWidget {
   }
 
   bool isLastMessageMyText() {
-    return chatWithUser.chat.lastMessage.senderId == myUserId;
+    return chatWithUser.chat.lastMessage!.senderId == myUserId;
   }
 
   bool isLastMessageSeen() {
-    if (chatWithUser.chat.lastMessage.seen == false &&
+    if (chatWithUser.chat.lastMessage!.seen == false &&
         isLastMessageMyText() == false) {
       return false;
     }
@@ -78,7 +78,7 @@ class ChatListTile extends StatelessWidget {
                 chatWithUser.chat.lastMessage == null
                     ? ''
                     : convertEpochMsToDateTime(
-                        chatWithUser.chat.lastMessage.epochTimeMs),
+                        chatWithUser.chat.lastMessage!.epochTimeMs),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 12))),
       ],
@@ -96,7 +96,7 @@ class ChatListTile extends StatelessWidget {
               chatWithUser.chat.lastMessage == null
                   ? "Write something!"
                   : ((isLastMessageMyText() ? "You: " : "") +
-                      chatWithUser.chat.lastMessage.text),
+                      chatWithUser.chat.lastMessage!.text),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(fontSize: 14),

@@ -53,7 +53,8 @@ class ChatScreen extends StatelessWidget {
                 stream: _databaseSource.observeUser(otherUserId),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) return Container();
-                  return ChatTopBar(user: AppUser.fromSnapshot(snapshot.requireData));
+                  return ChatTopBar(
+                      user: AppUser.fromSnapshot(snapshot.requireData));
                 })),
         body: Column(children: [
           Expanded(
@@ -72,7 +73,9 @@ class ChatScreen extends StatelessWidget {
                     if (_scrollController.hasClients)
                       _scrollController.jumpTo(0.0);
 
-                    List<bool> showTimeList = new List<bool>(messages.length);
+                    List<bool> showTimeList =
+                        List.generate(messages.length, (index) => false);
+                    // List<bool> showTimeList = List<bool>(messages.length);
 
                     for (int i = messages.length - 1; i >= 0; i--) {
                       bool shouldShow = i == (messages.length - 1)
@@ -160,5 +163,11 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  RaisedButton({required EdgeInsets padding, required int highlightElevation, required int elevation, required RoundedRectangleBorder shape, required Text child, required Null Function() onPressed}) {}
+  RaisedButton(
+      {required EdgeInsets padding,
+      required int highlightElevation,
+      required int elevation,
+      required RoundedRectangleBorder shape,
+      required Text child,
+      required Null Function() onPressed}) {}
 }

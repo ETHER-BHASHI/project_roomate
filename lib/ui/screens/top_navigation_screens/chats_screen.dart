@@ -35,18 +35,19 @@ class _ChatsScreenState extends State<ChatsScreen> {
                 return CustomModalProgressHUD(
                   inAsyncCall:
                       userProvider.user == null || userProvider.isLoading,
-                  key: null,
+                  offset: Offset(1.0, 1.0),
+//Yeh jo mene offset kiya h mjhe koi idea nhi h kya kaam kar rha h. bass error hatane k liye add kara h. Ui m thde change karna ho toh iski value upar neeche kar k dekh lena okkkay ma kr lungi baad ma
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<List<ChatWithUser>>(
                           future: userProvider
-                              .getChatsWithUser(userSnapshot.data.id),
+                              .getChatsWithUser(userSnapshot.data!.id),
                           builder: (context, chatWithUsersSnapshot) {
                             if (chatWithUsersSnapshot.data == null &&
                                 chatWithUsersSnapshot.connectionState !=
                                     ConnectionState.done) {
                               return CustomModalProgressHUD(
                                   inAsyncCall: true,
-                                  key: null,
+                                  offset: Offset(1.0, 1.0),
                                   child: Container());
                             } else {
                               return chatWithUsersSnapshot.data?.length == 0

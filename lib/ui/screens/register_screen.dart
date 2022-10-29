@@ -123,7 +123,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         body: CustomModalProgressHUD(
           inAsyncCall: _isLoading,
           key: _scaffoldKey,
-          offset: Offset.fromDirection(distance= 1.0),
+          offset: Offset.fromDirection(distance = 1.0),
           child: Container(
             margin: EdgeInsets.only(bottom: 40),
             child: Column(
@@ -169,9 +169,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: _currentScreenIndex == (_endScreenIndex)
                       ? RoundedButton(
                           text: 'REGISTER',
-                          onPressed: bool _isLoading == false,
-                              ? () => {registerUser()}
-                              : null)
+                          onPressed: () {
+                            if (_isLoading == false) {
+                              registerUser();
+                            }
+                          })
                       : RoundedButton(
                           text: 'CONTINUE',
                           onPressed: () => {

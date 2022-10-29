@@ -17,8 +17,8 @@ class ChatsObserver {
           _databaseSource.observeChat(element.chat.id).listen((event) {
         Chat updatedChat = Chat.fromSnapshot(event);
 
-        if ((updatedChat.lastMessage.epochTimeMs !=
-                element.chat.lastMessage.epochTimeMs)) {
+        if ((updatedChat.lastMessage!.epochTimeMs !=
+            element.chat.lastMessage!.epochTimeMs)) {
           element.chat = updatedChat;
           onChatUpdated();
         }

@@ -86,8 +86,7 @@ class _MatchScreenState extends State<MatchScreen> {
               future: userProvider.user,
               builder: (context, userSnapshot) {
                 return CustomModalProgressHUD(
-                  inAsyncCall:
-                      userProvider.isLoading,
+                  inAsyncCall: userProvider.isLoading,
                   key: _scaffoldKey,
                   offset: Offset.fromDirection(1.0),
                   child: (userSnapshot.hasData)
@@ -136,7 +135,8 @@ class _MatchScreenState extends State<MatchScreen> {
                                                 RoundedIconButton(
                                                   onPressed: () {
                                                     personSwiped(
-                                                        userSnapshot.requireData,
+                                                        userSnapshot
+                                                            .requireData,
                                                         snapshot.requireData,
                                                         false);
                                                   },
@@ -148,12 +148,14 @@ class _MatchScreenState extends State<MatchScreen> {
                                                 RoundedIconButton(
                                                   onPressed: () {
                                                     personSwiped(
-                                                        userSnapshot.requireData,
+                                                        userSnapshot
+                                                            .requireData,
                                                         snapshot.requireData,
                                                         true);
                                                   },
                                                   iconData: Icons.favorite,
-                                                  iconSize: 30, buttonColor: Colors.blue,
+                                                  iconSize: 30,
+                                                  buttonColor: Colors.blue,
                                                 ),
                                               ],
                                             ),

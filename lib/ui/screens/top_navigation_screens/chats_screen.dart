@@ -36,17 +36,17 @@ class _ChatsScreenState extends State<ChatsScreen> {
                   inAsyncCall:
                       userProvider.isLoading,
                   offset: Offset.fromDirection(1.0),
-                  key: null,
+                  key: UniqueKey(),
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<List<ChatWithUser>>(
                           future: userProvider
-                              .getChatsWithUser(userSnapshot.data?.id),
+                              .getChatsWithUser(userSnapshot.data!.id),
                           builder: (context, chatWithUsersSnapshot) {
                             if (chatWithUsersSnapshot.data == null &&
                                 chatWithUsersSnapshot.connectionState !=
                                     ConnectionState.done) {
                               return CustomModalProgressHUD(
-                                  inAsyncCall: true, key: ,
+                                  inAsyncCall: true, key: UniqueKey(),
                                   offset: Offset.fromDirection(1.0),
                                   child: Container());
                             } else {
@@ -60,9 +60,9 @@ class _ChatsScreenState extends State<ChatsScreen> {
                                     )
                                   : ChatsList(
                                       chatWithUserList:
-                                          chatWithUsersSnapshot.data,
+                                          chatWithUsersSnapshot.requireData,
                                       onChatWithUserTap: chatWithUserPressed,
-                                      myUserId: userSnapshot.data.id,
+                                      myUserId: userSnapshot.data!.id,
                                     );
                             }
                           })

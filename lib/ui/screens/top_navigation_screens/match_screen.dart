@@ -25,15 +25,13 @@ class _MatchScreenState extends State<MatchScreen> {
   late List<String> _ignoreSwipeIds;
 
   Future<AppUser> loadPerson(String myUserId) async {
-    if (_ignoreSwipeIds != null) {
-      _ignoreSwipeIds = <String>[];
-      var swipes = await _databaseSource.getSwipes(myUserId);
-      for (var i = 0; i < swipes.size; i++) {
-        Swipe swipe = Swipe.fromSnapshot(swipes.docs[i]);
-        _ignoreSwipeIds.add(swipe.id);
-      }
-      _ignoreSwipeIds.add(myUserId);
+    _ignoreSwipeIds = <String>[];
+    var swipes = await _databaseSource.getSwipes(myUserId);
+    for (var i = 0; i < swipes.size; i++) {
+      Swipe swipe = Swipe.fromSnapshot(swipes.docs[i]);
+      _ignoreSwipeIds.add(swipe.id);
     }
+    _ignoreSwipeIds.add(myUserId);
     var res = await _databaseSource.getPersonsToMatchWith(1, _ignoreSwipeIds);
     if (res.docs.length > 0) {
       var userToMatchWith = AppUser.fromSnapshot(res.docs.first);
@@ -89,12 +87,12 @@ class _MatchScreenState extends State<MatchScreen> {
               builder: (context, userSnapshot) {
                 return CustomModalProgressHUD(
                   inAsyncCall:
-                      userProvider.user == null || userProvider.isLoading,
+                      userProvider.isLoading,
                   key: _scaffoldKey,
                   offset: Offset.fromDirection(1.0),
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<AppUser>(
-                          future: loadPerson(userSnapshot.data.id),
+                          future: loadPerson(userSnapshot.data!.id),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                     ConnectionState.done &&
@@ -123,7 +121,7 @@ class _MatchScreenState extends State<MatchScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      SwipeCard(person: snapshot.data),
+                                      SwipeCard(person: snapshot.requireData),
                                       Expanded(
                                         child: Container(
                                           margin: EdgeInsets.symmetric(
@@ -138,8 +136,8 @@ class _MatchScreenState extends State<MatchScreen> {
                                                 RoundedIconButton(
                                                   onPressed: () {
                                                     personSwiped(
-                                                        userSnapshot.data,
-                                                        snapshot.data,
+                                                        userSnapshot.requireData,
+                                                        snapshot.requireData,
                                                         false);
                                                   },
                                                   iconData: Icons.clear,
@@ -150,8 +148,8 @@ class _MatchScreenState extends State<MatchScreen> {
                                                 RoundedIconButton(
                                                   onPressed: () {
                                                     personSwiped(
-                                                        userSnapshot.data,
-                                                        snapshot.data,
+                                                        userSnapshot.requireData,
+                                                        snapshot.requireData,
                                                         true);
                                                   },
                                                   iconData: Icons.favorite,

@@ -38,11 +38,9 @@ class ChatScreen extends StatelessWidget {
   bool shouldShowTime(Message currMessage, Message messageBefore) {
     int halfHourInMilli = 1800000;
 
-    if (messageBefore != null) {
-      if ((messageBefore.epochTimeMs - currMessage.epochTimeMs).abs() >
-          halfHourInMilli) {
-        return true;
-      }
+    if ((messageBefore.epochTimeMs - currMessage.epochTimeMs).abs() >
+        halfHourInMilli) {
+      return true;
     }
     return messageBefore == null;
   }
@@ -55,7 +53,7 @@ class ChatScreen extends StatelessWidget {
                 stream: _databaseSource.observeUser(otherUserId),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) return Container();
-                  return ChatTopBar(user: AppUser.fromSnapshot(snapshot.data));
+                  return ChatTopBar(user: AppUser.fromSnapshot(snapshot.requireData));
                 })),
         body: Column(children: [
           Expanded(

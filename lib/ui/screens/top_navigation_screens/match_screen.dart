@@ -51,7 +51,7 @@ class _MatchScreenState extends State<MatchScreen> {
         _databaseSource.addMatch(myUser.id, Match(otherUser.id));
         _databaseSource.addMatch(otherUser.id, Match(myUser.id));
         String chatId = compareAndCombineIds(myUser.id, otherUser.id);
-        _databaseSource.addChat(Chat(chatId, null));
+        _databaseSource.addChat(Chat(chatId, Message as Message));
 
         Navigator.pushNamed(context, MatchedScreen.id, arguments: {
           "my_user_id": myUser.id,
@@ -66,7 +66,7 @@ class _MatchScreenState extends State<MatchScreen> {
 
   Future<bool> isMatch(AppUser myUser, AppUser otherUser) async {
     DocumentSnapshot swipeSnapshot =
-        await _databaseSource.getSwipe(otherUser.id, myUser.id);
+    await _databaseSource.getSwipe(otherUser.id, myUser.id);
     if (swipeSnapshot.exists) {
       Swipe swipe = Swipe.fromSnapshot(swipeSnapshot);
 
@@ -87,84 +87,82 @@ class _MatchScreenState extends State<MatchScreen> {
               future: userProvider.user,
               builder: (context, userSnapshot) {
                 return CustomModalProgressHUD(
-                  inAsyncCall: userProvider.isLoading,
+                  inAsyncCall:
+                  userProvider.isLoading,
                   key: _scaffoldKey,
                   offset: Offset.fromDirection(1.0),
                   child: (userSnapshot.hasData)
                       ? FutureBuilder<AppUser?>(
-                          future: loadPerson(userSnapshot.data!.id),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                    ConnectionState.done &&
-                                !snapshot.hasData) {
-                              return Center(
-                                child: Container(
-                                    child: Text('No users',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline4)),
-                              );
-                            }
-                            if (!snapshot.hasData) {
-                              return CustomModalProgressHUD(
-                                inAsyncCall: true,
-                                key: _scaffoldKey,
-                                offset: Offset.fromDirection(1.0),
-                                child: Container(),
-                              );
-                            }
-                            return Container(
-                              child: Padding(
-                                padding: EdgeInsets.all(12.0),
-                                child: Container(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SwipeCard(person: snapshot.requireData!),
-                                      Expanded(
-                                        child: Container(
-                                          margin: EdgeInsets.symmetric(
-                                              horizontal: 45),
-                                          child: Align(
-                                            alignment: Alignment.center,
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                RoundedIconButton(
-                                                  onPressed: () {
-                                                    personSwiped(
-                                                        userSnapshot
-                                                            .requireData,
-                                                        snapshot.requireData!,
-                                                        false);
-                                                  },
-                                                  iconData: Icons.clear,
-                                                  buttonColor:
-                                                      kColorPrimaryVariant,
-                                                  iconSize: 30,
-                                                ),
-                                                RoundedIconButton(
-                                                  onPressed: () {
-                                                    personSwiped(
-                                                        userSnapshot
-                                                            .requireData,
-                                                        snapshot.requireData!,
-                                                        true);
-                                                  },
-                                                  iconData: Icons.favorite,
-                                                  iconSize: 30,
-                                                  buttonColor: Colors.blue,
-                                                ),
-                                              ],
+                      future: loadPerson(userSnapshot.data!.id),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.done &&
+                            !snapshot.hasData) {
+                          return Center(
+                            child: Container(
+                                child: Text('No users',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4)),
+                          );
+                        }
+                        if (!snapshot.hasData) {
+                          return CustomModalProgressHUD(
+                            inAsyncCall: true,
+                            key: _scaffoldKey,
+                            offset: Offset.fromDirection(1.0),
+                            child: Container(),
+                          );
+                        }
+                        return Container(
+                          child: Padding(
+                            padding: EdgeInsets.all(12.0),
+                            child: Container(
+                              child: Column(
+                                crossAxisAlignment:
+                                CrossAxisAlignment.center,
+                                children: [
+                                  SwipeCard(person: snapshot.requireData!),
+                                  Expanded(
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 45),
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment
+                                              .spaceBetween,
+                                          children: [
+                                            RoundedIconButton(
+                                              onPressed: () {
+                                                personSwiped(
+                                                    userSnapshot.requireData,
+                                                    snapshot.requireData!,
+                                                    false);
+                                              },
+                                              iconData: Icons.clear,
+                                              buttonColor:
+                                              kColorPrimaryVariant,
+                                              iconSize: 30,
                                             ),
-                                          ),
+                                            RoundedIconButton(
+                                              onPressed: () {
+                                                personSwiped(
+                                                    userSnapshot.requireData,
+                                                    snapshot.requireData!,
+                                                    true);
+                                              },
+                                              iconData: Icons.favorite,
+                                              iconSize: 30, buttonColor: Colors.blue,
+                                            ),
+                                          ],
                                         ),
                                       ),
+                                    ),
+                                  ),
 
-                                      /*    child: Row(
+                                  /*    child: Row(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       mainAxisAlignment:
@@ -194,12 +192,12 @@ class _MatchScreenState extends State<MatchScreen> {
                                         ),
                                       ],
                                       ),*/
-                                    ],
-                                  ),
-                                ),
+                                ],
                               ),
-                            );
-                          })
+                            ),
+                          ),
+                        );
+                      })
                       : Container(),
                 );
               },
@@ -208,3 +206,6 @@ class _MatchScreenState extends State<MatchScreen> {
         )));
   }
 }
+
+
+

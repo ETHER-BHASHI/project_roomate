@@ -5,9 +5,41 @@ import 'package:project_roomate/ui/widgets/rounded_button.dart';
 import 'package:project_roomate/ui/widgets/rounded_outlined_button.dart';
 import 'package:project_roomate/ui/screens/login_screen.dart';
 import 'package:project_roomate/ui/screens/register_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import '../../auth.dart';
 
-class StartScreen extends StatelessWidget {
+
+
+
+  class StartScreen extends StatelessWidget {
+    StartScreen({Key? key}) : super(key: key);
   static const String id = 'start_screen';
+
+
+
+  final User? user = Auth().currentUser;
+
+  Future<void>signOut() async {
+    await Auth().signOut();
+  }
+
+  Widget _title() {
+    return const Text('HELLO USER');
+  }
+
+  Widget _userUid() {
+    return  Text(user?.email?? 'user email');
+  }
+
+  Widget _signOutButton() {
+    return ElevatedButton(
+      onPressed: signOut,
+      child: const Text('sign out'),
+    );
+  }
+
+
 
   @override
   Widget build(BuildContext context) {

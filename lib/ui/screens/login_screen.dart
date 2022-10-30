@@ -8,9 +8,15 @@ import 'package:project_roomate/ui/widgets/bordered_text_field.dart';
 import 'package:project_roomate/ui/widgets/custom_modal_progress_hud.dart';
 import 'package:project_roomate/ui/widgets/rounded_button.dart';
 import 'package:project_roomate/util/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
+
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
+   String? errorMessage = '';
+   bool islogin = true;
 
   @override
   _LoginScreenState createState() => _LoginScreenState();

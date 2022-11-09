@@ -10,6 +10,8 @@ import 'package:project_roomate/ui/widgets/rounded_button.dart';
 import 'package:project_roomate/util/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../auth.dart';
+
 
 
 
